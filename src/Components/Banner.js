@@ -1,12 +1,21 @@
 import './../App.css';
+import React, { Component } from 'react';
 
-function Banner() {
+class Banner extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: null,
+    };
+  }
 
-  return (
-    <div className="Banner">
-        <h1>Dubhacks 2021</h1>
-    </div>
-  );
+  render() {
+    return (
+      <div className="banner">
+        <h1>DubHacks 2021</h1>
+      </div>
+    );
+  }
 }
 
 export default Banner;
