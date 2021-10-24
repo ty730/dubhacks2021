@@ -1,5 +1,6 @@
 import './../App.css';
 import React, { Component  } from 'react';
+import { FcSearch } from 'react-icons/fc';
 
 class Banner extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class Banner extends Component {
     this.setState({
       [event.target.name]: event.target.value
     });
+    this.props.onChange(event.target.value);
   }
 
   render() {
@@ -28,6 +30,9 @@ class Banner extends Component {
           >
           {console.log(this.state)}
         </input>
+        <button className="search-btn">
+          <FcSearch size={50} className='searchIcon'/>
+          </button>
       </div>
 
     );

@@ -111,3 +111,9 @@ div {
   justify-content: space-evenly;
   padding: 20px 0px;
 }
+
+.search-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
