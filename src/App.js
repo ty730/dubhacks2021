@@ -8,6 +8,7 @@ import React, { Component, Profiler  } from 'react';
 import axios from 'axios';
 import Courses from './Components/Courses';
 import Professor from './Components/Professor';
+import PreviousQuarters from './Components/PreviousQuarters';
 
 
 class App extends Component {
@@ -57,6 +58,7 @@ class App extends Component {
         {this.state.professors.map((prof, i) => (
           <Professor key={i} profName={prof} />
         ))}
+        <PreviousQuarters course={this.state.course} />
         <h2 className="reddit-title">Popular Q&As from Reddit</h2>
         <Reddit course={this.state.course} />
       </div>
