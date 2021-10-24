@@ -20,10 +20,10 @@ class Courses extends Component {
       let courseArr = this.state.courseList.data;
       for (let i = 0; i < courseArr.length; i++) {
 
-          let num = courseArr[i].num;
+          let num = courseArr[i].course.num;
           let courseNum = num.split(/(\s+)/).filter( e => e.trim().length > 0).join(" ");
           if (courseNum === searched) {
-              this.setState({ foundCourse: courseArr[i]});
+              this.setState({ foundCourse: courseArr[i].course });
               console.log(courseArr[i]);
           }
       }
