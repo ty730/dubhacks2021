@@ -21,17 +21,23 @@ class PreviousQuarters extends Component {
   }
 
   render() {
-    let main;
+    let main = [];
     if (this.state.fetched) {
-      main =
-        <div>
-          <p>{this.state.previousQuarters}</p>
-        </div>
+      this.state.previousQuarters.forEach((obj) => {
+        console.log(obj.prof);
+        main.push(
+          <div>
+            <a href={obj.link}>{obj.term}</a>
+            <span> {obj.prof} </span>
+          </div>
+        );
+      });
     } else {
       main = <ScaleLoader color={"#607D8B"} loading={!this.state.fetched} size={150} />
     }
     return (
       <div className="prev_quarter">
+        <h2>Previous Quarter Pages</h2>
         {main}
       </div>
     );

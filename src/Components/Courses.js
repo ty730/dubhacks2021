@@ -7,16 +7,20 @@ class Courses extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        foundCourse: {num: "no course number found", name: "no course name found"}
+        foundCourse: {num: "no course number found", name: "no course name found"},
+        courseDescription: ""
     };
   }
 
   componentDidMount() {
-     axios.get("/api/list").then((result) => this.setState({ courseList: result }, this.parseCourseList));
+    axios.get("/api/list").then((result) => this.setState({ courseList: result }, this.parseCourseList));
+    axios.post("/api/course_desc", {course: this.props.course}).then((response) => {
+      this.setState({courseDescription: response.data});
+    });
   }
 
   parseCourseList() {
-      let searched = "CSE 142";
+      let searched = this.props.course;
       let courseArr = this.state.courseList.data;
       for (let i = 0; i < courseArr.length; i++) {
 
@@ -34,6 +38,7 @@ class Courses extends Component {
       <div className="courses">
           <h2>{ this.state.foundCourse.num }</h2>
           <h2>{ this.state.foundCourse.name }</h2>
+          <p>{ this.state.courseDescription }</p>
       </div>
     );
   }

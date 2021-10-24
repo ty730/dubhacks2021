@@ -34,7 +34,6 @@ router.route('/list').get((req, res) => {
       let classesToProfs = [];
       let count = -1;
       let all = $('table').each((i, elem) => {
-        console.log($(elem).attr('bgcolor'));
         if ($(elem).attr('bgcolor')) {
           let course = {};
         $(elem).find('a').each((i, a) => {
@@ -51,13 +50,11 @@ router.route('/list').get((req, res) => {
             if (str.includes(",") && count > 0) {
               let name = str.split(",");
               classesToProfs[count].profs.push(name[1] + " " + name[0]);
-              console.log(name);
             } 
             
           });
         }
       });
-      console.log(classesToProfs);
       res.status(200).json(classesToProfs);
     }).catch((error) => {
       res.status(404).send('404 - Something went wrong!');
@@ -95,7 +92,6 @@ router.route('/prof').post((req, res) => {
         link: link[0]
       });
     }).catch((error) => {
-      console.log(error);
       res.status(404).send('404 - Something went wrong!');
     });
 });
@@ -123,51 +119,39 @@ router.route('/reddit').post((req, res) => {
     });
     
   }).catch((error) => {
-    console.log(error);
     res.status(404).send('404 - Something went wrong!');
   });
 });
 
 router.route('/prev_quarters').post((req, res) => {
-  let course = req.body.course;
+  let course = req.body.course.replace(' ', '').toLowerCase();
   axios.get('http://courses.cs.washington.edu/courses/' + course + '/').then((response) => {
     let data = [];
     const $ = cheerio.load(response.data);
-    let prevQ = 'http://courses.cs.washington.edu/courses/' + $('li:contains("Previous") > ul > li').each((i, elem) => {
-      let link = $(elem).find('a').attr('href');
+    let prevQ = $('li:contains("Previous") > ul > li').each((i, elem) => {
+      let link = 'http://courses.cs.washington.edu/courses/' + course + '/' + $(elem).find('a').attr('href');
       let prof = $(elem).find('div').text();
       let term = $(elem).find('a').text().replace(' ' + prof, '');
-      console.log({link, prof, term});
+      data.push({link: link, prof: prof, term: term});
     });
-    res.status(200).json(prevQ);
+    res.status(200).json(data);
   }).catch((error) => {
     res.status(404).send('404 - Something went wrong!');
   });
     
 });
 
-// router.route('/rankings').get((req, res) => {
-//   Meme.find()
-//     .sort({ elo: 'descending' })
-//     .then(memes => res.status(200).json(memes))
-//     .catch(err => res.status(400).json('Error: ' + err))
-// })
-
-// router.route('/:id').delete((req, res) => {
-//   Meme.findByIdAndDelete(req.params.id)
-//     .then(() => res.status(204))
-//     .catch(err => res.status(400).json('Error: ' + err))
-// })
-
-// router.route('/:id').put((req, res) => {
-  
-  
-// })
-
-// router.route('/').get((req, res) => {
-//   const query = Meme.aggregate([{$sample: { size: 2}}])
-//     .then((memes) => res.json(memes))
-//     .catch(err => res.status(400).json('Error: ' + err))
-// })
+router.route('/course_desc').post((req, res) => {
+  let course = req.body.course.replace(' ', '').toLowerCase();
+  axios.get('http://courses.cs.washington.edu/courses/' + course + '/').then((response) => {
+    let data = [];
+    const $ = cheerio.load(response.data);
+    let p = $('p:contains("Catalog Description")').text();
+    res.status(200).json(p);
+  }).catch((error) => {
+    res.status(404).send('404 - Something went wrong!');
+  });
+    
+});
 
 module.exports = router
