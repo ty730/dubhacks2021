@@ -17,14 +17,24 @@ class Reddit extends Component {
     }).then((res) => {
         console.log("here");
       console.log(res.data);
-      //this.setState({response: res, fetched: true});
+      this.setState({response: res.data, fetched: true});
     });
   }
 
   render() {
     let main;
     if (this.state.fetched) {
-      main = <div>{this.state.response}</div>
+      main = <div>{this.state.response.map((redditPost, i) => {
+          return (<div>
+            <h2 key={i}>{redditPost.selftext}</h2>
+            {redditPost.comments.map((comment, j) => {
+                return (
+                    <p key={i}>{comment.body}</p>
+                )
+            })}
+            </div>
+            )
+      })}</div>
     } else {
       main = <div></div>
     }
