@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans');
+
 .App {
   text-align: center;
 }
@@ -35,4 +37,18 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.home {
+  text-align: left;
+  margin: 20px 30px;
+}
+
+div {
+  font-family: 'DM Sans', sans-serif;
+}
+
+.banner {
+  text-align: left;
+  padding: 15px 30px;
 }

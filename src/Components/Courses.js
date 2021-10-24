@@ -19,7 +19,7 @@ class Courses extends Component {
       let searched = "CSE 142";
       let courseArr = this.state.courseList.data;
       for (let i = 0; i < courseArr.length; i++) {
-          
+
           let num = courseArr[i].num;
           let courseNum = num.split(/(\s+)/).filter( e => e.trim().length > 0).join(" ");
           if (courseNum === searched) {
