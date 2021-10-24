@@ -60,6 +60,8 @@ div {
 
 .courses{
  font-size: 24px;
+ padding-left: 30px;
+ padding-right: 30px;
 }
 
 .banner h1, .banner h3 {

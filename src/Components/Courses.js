@@ -37,6 +37,7 @@ class Courses extends Component {
     return (
       <div className="courses">
           <h1 >{ this.state.foundCourse.num}: { this.state.foundCourse.name }</h1>
+          <p>{ this.state.courseDescription }</p>
       </div>
     );
   }
