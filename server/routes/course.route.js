@@ -31,7 +31,34 @@ router.route('/list').get((req, res) => {
         });
         data.push(course);
       });
-      res.status(200).json(data);
+      let classesToProfs = [];
+      let count = -1;
+      let all = $('table').each((i, elem) => {
+        console.log($(elem).attr('bgcolor'));
+        if ($(elem).attr('bgcolor')) {
+          let course = {};
+        $(elem).find('a').each((i, a) => {
+          if (i == 0) {
+            course.num = $(a).text();
+          } else {
+            course.name = $(a).text();
+          }
+        });
+        classesToProfs.push({course: course, profs: []});
+          count++;
+        } else {
+          $(elem).text().split(/(\s+)/).filter( e => e.trim().length > 0).forEach((str) => {
+            if (str.includes(",") && count > 0) {
+              let name = str.split(",");
+              classesToProfs[count].profs.push(name[1] + " " + name[0]);
+              console.log(name);
+            } 
+            
+          });
+        }
+      });
+      console.log(classesToProfs);
+      res.status(200).json(classesToProfs);
     }).catch((error) => {
       res.status(404).send('404 - Something went wrong!');
     });
