@@ -34,6 +34,16 @@ class Professor extends Component {
     return <div className={color}>Quality: <br/> {quality} / 5</div>;
   }
 
+  getTakeAgain(takeAgain) {
+    let path = "./media/";
+    if (takeAgain > 50) {
+      path +="thumbs_up.png";
+    } else {
+      path += "thumb_down.png";
+    }
+    return <div className="takeAgain">{takeAgain}% would take again<br/><img src={path}/></div>
+  }
+
   render() {
     let main;
     if (this.state.fetched) {
@@ -42,7 +52,7 @@ class Professor extends Component {
           <h3><a href={this.state.professor.link}>{this.props.profName}</a></h3>
           <div className="quality">{this.getQuality(this.state.professor.quality)}</div>
           <p>Level Of Difficulty: {this.state.professor.difficulty} / 5</p>
-          <p>{this.state.professor.takeAgain} would take again</p>
+          {this.getTakeAgain(this.state.professor.takeAgain)}
           <p>From {this.state.professor.rating}</p>
         </div>
     } else {
