@@ -52,3 +52,19 @@ div {
   text-align: left;
   padding: 15px 30px;
 }
+
+.rowC {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.searchBox {
+  width: 150px;
+  height: 10px;
+  padding: 30px;
+}
+
+.searchIcon {
+  padding: 0 0 0 0;
+}

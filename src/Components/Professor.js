@@ -1,7 +1,6 @@
 import './../App.css';
 import React, { Component } from 'react';
 import axios from 'axios';
-import cheerio from 'cheerio';
 
 class Professor extends Component {
   constructor(props) {
@@ -10,21 +9,15 @@ class Professor extends Component {
       response: null,
       fetched: false,
     };
-    this.grabRMP();
   }
 
-  grabRMP() {
-    
-    fetch('https://google.com', {headers: {'Access-Control-Allow-Origin': '*'}})
-      .then(res => res.text()).then(text => console.log(text));
-    // axios.get('http://google.com', {
-    //   mode: 'no-cors',
-    //   headers: {
-    //     'Access-Control-Allow-Origin': '*',
-    //   }
-    // }).then((res) => {
-    //   this.setState({response: res, fetched: true});
-    // });
+  componentDidMount() {
+    axios.post('/api/prof', {
+      prof: 'Eli Shlizerman' //TODO REPLACE WITH PROP
+    }).then((res) => {
+      console.log(res.data);
+      //this.setState({response: res, fetched: true});
+    });
   }
 
   render() {
