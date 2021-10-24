@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans');
+
 .App {
   text-align: center;
 }
@@ -37,13 +39,30 @@
   }
 }
 
-.rowC{display:flex; flex-direction:row; justify-content: center;} 
+.home {
+  text-align: left;
+  margin: 20px 30px;
+}
+
+div {
+  font-family: 'DM Sans', sans-serif;
+}
+
+.banner {
+  text-align: left;
+  padding: 15px 30px;
+}
+
+.rowC {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 
 .searchBox {
-  width:150px;
+  width: 150px;
   height: 10px;
-  padding:30px;
-  
+  padding: 30px;
 }
 
 .searchIcon {
