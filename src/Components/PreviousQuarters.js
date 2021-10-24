@@ -28,7 +28,7 @@ class PreviousQuarters extends Component {
         main.push(
           <div>
             <a href={obj.link}>{obj.term}</a>
-            <span> {obj.prof} </span>
+            <span> with professor(s) {obj.prof.replace('(','').replace(')','')} </span>
           </div>
         );
       });
