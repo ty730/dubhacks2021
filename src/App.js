@@ -4,9 +4,10 @@ import Home from './Components/Home';
 import Footer from './Components/Footer';
 import Reddit from './Components/Reddit';
 //import Courses from './Components/Courses';
-import React, { Component  } from 'react';
+import React, { Component, Profiler  } from 'react';
 import axios from 'axios';
 import Courses from './Components/Courses';
+import Professor from './Components/Professor';
 
 
 class App extends Component {
@@ -16,13 +17,14 @@ class App extends Component {
       course: null,
       courseApiData: null,
       courseList: null,
-      search: false
+      search: false,
+      professors: []
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
-    axios.get("/api/list").then((result) => this.setState({ ...this.state.course, courseApiData: result, ...this.state.courseList, ...this.state.search }, this.parseCourseList));
+    axios.get("/api/list").then((result) => this.setState({ ...this.state.course, courseApiData: result, ...this.state.courseList, ...this.state.search, ...this.state.professors }, this.parseCourseList));
  }
 
  parseCourseList() {
@@ -34,18 +36,28 @@ class App extends Component {
          niceList.push(courseNum);
      }
      console.log("getting course list");
-     this.setState({ ...this.state.course, ...this.state.courseApiData, courseList: niceList, ...this.state.search });
+     this.setState({ ...this.state.course, ...this.state.courseApiData, courseList: niceList, ...this.state.search, ...this.state.professors });
  }
 
   handleChange(search) {
-    this.setState({ course: search, ...this.state.courseApiData, ...this.courseList, search: true });
+    let courseInfo = this.state.courseApiData.data.find((item) => {
+      return item.course.num.split(/(\s+)/).filter( e => e.trim().length > 0).join(" ") == search;
+    });
+    console.log(courseInfo.profs);
+    this.setState({ course: search, ...this.state.courseApiData, ...this.courseList, search: true, professors: courseInfo.profs });
   }
 
   render() {
     const course = this.state.course;
     let display;
     if (this.state.search) {
-      display = <Courses />
+      display =
+      <div>
+        <Courses course={this.state.course} />
+        {this.state.professors.map((prof, i) => (
+          <Professor key={i} profName={prof} />
+        ))}
+      </div>
     } else {
       display = <Home />
     }
