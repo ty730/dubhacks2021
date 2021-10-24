@@ -75,14 +75,26 @@ router.route('/prof').post((req, res) => {
 
 router.route('/reddit').post((req, res) => {
   let course = req.body.course;
+  let redditComments = [];
   r.search({
     query: course,
     subreddit: 'udub',
     sort: 'relevance',
-    limit: 10
+    limit: 3
   }).then((data) => {
-    console.log(data);
-    res.status(200).json(data);
+    let arr = [];
+    r.getSubmission(data[0].id).expandReplies({limit: 3, depth:1}).then((replies) => {
+      arr.push(replies);
+      r.getSubmission(data[1].id).expandReplies({limit: 3, depth:1}).then((replies2) => {
+        arr.push(replies2);
+        r.getSubmission(data[2].id).expandReplies({limit: 3, depth:1}).then((replies3) => {
+          arr.push(replies3);
+          
+          res.status(200).json(arr);
+        });
+      });
+    });
+    
   }).catch((error) => {
     console.log(error);
     res.status(404).send('404 - Something went wrong!');

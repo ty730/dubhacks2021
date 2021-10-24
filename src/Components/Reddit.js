@@ -15,6 +15,7 @@ class Reddit extends Component {
     axios.post('/api/reddit', {
       course: 'CSE 142' //TODO REPLACE WITH PROP
     }).then((res) => {
+        console.log("here");
       console.log(res.data);
       //this.setState({response: res, fetched: true});
     });
