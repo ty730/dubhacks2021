@@ -56,7 +56,7 @@ class Professor extends Component {
           <h3><a href={this.state.professor.link}>{this.props.profName}</a></h3>
           <div className="quality">{this.getQuality(this.state.professor.quality)}</div>
           <p>Level Of Difficulty: {this.state.professor.difficulty} / 5</p>
-          {this.getTakeAgain(this.state.professor.takeAgain)}
+          <p>{this.getTakeAgain(this.state.professor.takeAgain)}</p>
           <p>From {this.state.professor.rating}</p>
         </div>
     } else {

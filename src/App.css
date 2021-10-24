@@ -58,6 +58,10 @@ div {
   justify-items: left;
 }
 
+.courses{
+ font-size: 24px;
+}
+
 .banner h1, .banner h3 {
   margin: 0;
 }
@@ -78,10 +82,11 @@ div {
 }
 
 .professor {
-  border-radius: 15px;
+  border: 15px purple;
+  
   margin: 15px 0px;
   padding: 0px 15px;
-  background-color: rgb(204, 233, 243);
+  background-color: rgb(232, 234, 241);
 }
 
 .great, .good, .okay, .poor {
