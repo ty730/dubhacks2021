@@ -27,15 +27,21 @@ class Banner extends Component {
     let errTwo = "";
     if (this.props.courseList.includes(this.state.courseName.toUpperCase())) {
       this.props.onChange(this.state.courseName.toUpperCase());
+      this.setState({
+        courseName: "",
+        error: err,
+        errorTwo: errTwo
+      })
     } else {
       err = "You must enter a valid course with the pattern [department abbr.] [course number], ex: CSE 142, cse 143";
       errTwo = "We currently only support CSE courses, but plan to support more departments in the future!";
+      this.setState({
+        ...this.state.courseName,
+        error: err,
+        errorTwo: errTwo
+      })
     }
-    this.setState({
-      ...this.state.courseName,
-      error: err,
-      errorTwo: errTwo
-    })
+    
   }
 
   render() {
@@ -51,6 +57,7 @@ class Banner extends Component {
               onChange={this.onInputchange}
               placeholder = "search for a course"
               className = "searchBox"
+              value={this.state.courseName}
               >
               {console.log(this.state)}
               </input>
