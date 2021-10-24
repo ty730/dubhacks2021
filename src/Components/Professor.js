@@ -23,7 +23,7 @@ class Professor extends Component {
   render() {
     let main;
     if (this.state.fetched) {
-      main = 
+      main =
         <div>
           <p><a href={this.state.professor.link}>{this.props.profName}</a></p>
           <p>Quality: {this.state.professor.quality} / 5</p>
@@ -35,7 +35,7 @@ class Professor extends Component {
       main = <ScaleLoader color={"#F37C64"} loading={!this.state.fetched} size={150} />
     }
     return (
-      <div>
+      <div className="professor">
         {main}
       </div>
     );
