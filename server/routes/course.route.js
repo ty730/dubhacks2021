@@ -1,5 +1,4 @@
 // meme route
-
 const router = require('express').Router()
 const axios = require('axios');
 const cheerio = require('cheerio');
@@ -22,6 +21,42 @@ router.route('/list').get((req, res) => {
       });
       res.status(200).json(data);
     }).catch((error) => {
+      res.status(404).send('404 - Something went wrong!');
+    });
+});
+
+router.route('/prof').post((req, res) => {
+  let prof = req.body.prof;
+  axios.get('https://www.ratemyprofessors.com/search.jsp?queryoption=HEADER&queryBy=teacherName&schoolName=University+of+Washington&schoolID=1530&query=' + prof.replace(' ', '+'))
+    .then(response => {
+      let quality = []; let ratings = []; let takeAgain = []; let difficulty = []; let link = [];
+      const $ = cheerio.load(response.data);
+      $('div[class*=CardNumRating__CardNumRatingNumber]').each((i, elem) => {
+        quality.push($(elem).text());
+      });
+      $('div[class*=CardNumRating__CardNumRatingCount]').each((i, elem) => {
+        ratings.push($(elem).text());
+      });
+      $('div[class*=CardFeedback__CardFeedbackNumber]').each((i, elem) => {
+        if (i % 2) {
+          takeAgain.push($(elem).text());
+        } else {
+          difficulty.push($(elem).text());
+        }
+      });
+      $('a[class*=TeacherCard__StyledTeacherCard]').each((i, elem) => {
+        link.push('https://www.ratemyprofessors.com/' + $(elem).attr('href'));
+      });
+      
+      res.status(200).json({
+        quality: quality[0],
+        rating: ratings[0],
+        takeAgain: takeAgain[0],
+        difficulty: difficulty[0],
+        link: link[0]
+      });
+    }).catch((error) => {
+      console.log(error);
       res.status(404).send('404 - Something went wrong!');
     });
 });
