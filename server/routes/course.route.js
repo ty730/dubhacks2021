@@ -53,7 +53,7 @@ router.route('/prof').post((req, res) => {
         if (i % 2) {
           difficulty.push($(elem).text());
         } else {
-          takeAgain.push($(elem).text());
+          takeAgain.push($(elem).text().replace('%', ''));
         }
       });
       $('a[class*=TeacherCard__StyledTeacherCard]').each((i, elem) => {
@@ -99,6 +99,24 @@ router.route('/reddit').post((req, res) => {
     console.log(error);
     res.status(404).send('404 - Something went wrong!');
   });
+});
+
+router.route('/prev_quarters').post((req, res) => {
+  let course = req.body.course;
+  axios.get('http://courses.cs.washington.edu/courses/' + course + '/').then((response) => {
+    let data = [];
+    const $ = cheerio.load(response.data);
+    let prevQ = 'http://courses.cs.washington.edu/courses/' + $('li:contains("Previous") > ul > li').each((i, elem) => {
+      let link = $(elem).find('a').attr('href');
+      let prof = $(elem).find('div').text();
+      let term = $(elem).find('a').text().replace(' ' + prof, '');
+      console.log({link, prof, term});
+    });
+    res.status(200).json(prevQ);
+  }).catch((error) => {
+    res.status(404).send('404 - Something went wrong!');
+  });
+    
 });
 
 // router.route('/rankings').get((req, res) => {
