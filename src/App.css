@@ -44,6 +44,14 @@
   margin: 20px 30px;
 }
 
+.homeHeadings{
+  font-size: 40px;
+  font-style: bold;
+}
+.homeText{
+  font-size: 18px;
+}
+
 div {
   font-family: 'DM Sans', sans-serif;
 }
