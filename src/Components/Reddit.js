@@ -1,6 +1,7 @@
 import './../App.css';
 import React, { Component } from 'react';
 import axios from 'axios';
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 class Reddit extends Component {
   constructor(props) {
@@ -36,7 +37,9 @@ class Reddit extends Component {
             )
       })}</div>
     } else {
-      main = <div></div>
+      main = <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100px'}}>
+      <ScaleLoader color={"#607D8B"} loading={!this.state.fetched} size={150} />
+    </div>
     }
     return (
       <div>

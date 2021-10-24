@@ -141,9 +141,24 @@ div {
 }
 
 .reddit h2 {
-
+  font-size: 99%;
 }
 
 .reddit p {
+
+}
+
+.error-message {
+  color: red;
+}
+
+.prof-container {
+  margin: 20px 30px;
+}
+
+.takeAgain {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
 }

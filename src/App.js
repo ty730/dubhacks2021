@@ -55,9 +55,11 @@ class App extends Component {
       display =
       <div>
         <Courses course={this.state.course} />
-        {this.state.professors.map((prof, i) => (
-          <Professor key={i} profName={prof} />
-        ))}
+        <div className="prof-container">
+          {this.state.professors.map((prof, i) => (
+            <Professor key={i} profName={prof} />
+          ))}
+        </div>
         <PreviousQuarters course={this.state.course} />
         <h2 className="reddit-title">Popular Q&As from Reddit</h2>
         <Reddit course={this.state.course} />
