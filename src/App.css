@@ -74,7 +74,40 @@ div {
   padding: 5px;
   text-align: center;
   font-size: 16px;
+  border-radius: 10px;
+  margin-left: auto;
+}
+
+.professor {
+  border-radius: 15px;
+  margin: 15px 0px;
+  padding: 0px 15px;
+  background-color: rgb(204, 233, 243);
+}
+
+.great, .good, .okay, .poor {
+  padding: 5px;
   border-radius: 5px;
-  align-self: center;
-  justify-self: right;
+}
+
+.quality .great {
+  background-color: green;
+}
+
+.quality .good {
+  background-color: yellow;
+}
+
+.quality .okay {
+  background-color: orange;
+}
+
+.quality .poor {
+  background-color: red;
+}
+
+.professorContents {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px 0px;
 }

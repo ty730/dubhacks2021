@@ -13,8 +13,8 @@ class Home extends Component {
   render() {
     return (
       <div className="home">
-        <Professor profName="Stuart Reges"/>
-        <Professor profName="Bob Boiko"/>
+        <Professor profName="Brett Wortzman"/>
+        <Professor profName="Marc Seales"/>
         <h1>About this project</h1>
         <p>
           This project is aimed to help alleviate the pressures and pains of course-planning at UW.

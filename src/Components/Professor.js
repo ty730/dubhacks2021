@@ -20,13 +20,27 @@ class Professor extends Component {
     });
   }
 
+  getQuality(quality) {
+    let color = "";
+    if (quality >= 4) {
+      color = "great";
+    } else if (quality > 3) {
+      color = "good";
+    } else if (quality > 2) {
+      color = "okay";
+    } else {
+      color = "poor";
+    }
+    return <div className={color}>Quality: <br/> {quality} / 5</div>;
+  }
+
   render() {
     let main;
     if (this.state.fetched) {
       main =
-        <div>
-          <p><a href={this.state.professor.link}>{this.props.profName}</a></p>
-          <p>Quality: {this.state.professor.quality} / 5</p>
+        <div className="professorContents">
+          <h3><a href={this.state.professor.link}>{this.props.profName}</a></h3>
+          <div className="quality">{this.getQuality(this.state.professor.quality)}</div>
           <p>Level Of Difficulty: {this.state.professor.difficulty} / 5</p>
           <p>{this.state.professor.takeAgain} would take again</p>
           <p>From {this.state.professor.rating}</p>
