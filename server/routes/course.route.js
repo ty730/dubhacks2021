@@ -73,9 +73,10 @@ router.route('/prof').post((req, res) => {
     });
 });
 
-router.route('/reddit').get((req, res) => {
+router.route('/reddit').post((req, res) => {
+  let course = req.body.course;
   r.search({
-    query: 'cse 142',
+    query: course,
     subreddit: 'udub',
     sort: 'relevance',
     limit: 10
