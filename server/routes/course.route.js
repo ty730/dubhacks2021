@@ -3,6 +3,18 @@ const router = require('express').Router()
 const axios = require('axios');
 const cheerio = require('cheerio');
 
+const Snoowrap = require('snoowrap');
+const Snoostorm = require('snoostorm');
+
+// Build Snoowrap client
+const r = new Snoowrap({
+  userAgent: 'reddit-bot-example-node',
+  clientId: process.env.CLIENT_ID,
+  clientSecret: process.env.CLIENT_SECRET,
+  username: process.env.REDDIT_USER,
+  password: process.env.REDDIT_PASS
+});
+
 router.route('/list').get((req, res) => {
   axios.get('https://www.washington.edu/students/timeschd/WIN2022/cse.html')
     .then(response => {
@@ -59,6 +71,21 @@ router.route('/prof').post((req, res) => {
       console.log(error);
       res.status(404).send('404 - Something went wrong!');
     });
+});
+
+router.route('/reddit').get((req, res) => {
+  r.search({
+    query: 'cse 142',
+    subreddit: 'udub',
+    sort: 'relevance',
+    limit: 10
+  }).then((data) => {
+    console.log(data);
+    res.status(200).json(data);
+  }).catch((error) => {
+    console.log(error);
+    res.status(404).send('404 - Something went wrong!');
+  });
 });
 
 // router.route('/rankings').get((req, res) => {
