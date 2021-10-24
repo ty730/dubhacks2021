@@ -50,21 +50,31 @@ div {
 
 .banner {
   text-align: left;
-  padding: 15px 30px;
+  padding: 20px 35px;
+  background-color: lightblue;
+  display: flex;
+  align-items: flex-end;
+  font-size: 24px;
+  justify-items: left;
 }
 
-.rowC {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+.banner h1, .banner h3 {
+  margin: 0;
+}
+
+.banner h3 {
+  font-size: 20px;
+  margin-left: 10px;
+  margin-bottom: 8px;
 }
 
 .searchBox {
-  width: 150px;
-  height: 10px;
-  padding: 30px;
-}
-
-.searchIcon {
-  padding: 0 0 0 0;
+  width: 300px;
+  height: 20px;
+  padding: 5px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px;
+  align-self: center;
+  justify-self: right;
 }

@@ -1,6 +1,5 @@
 import './../App.css';
 import React, { Component  } from 'react';
-import { FcSearch } from 'react-icons/fc'
 
 class Banner extends Component {
   constructor(props) {
@@ -19,21 +18,18 @@ class Banner extends Component {
     return (
       <div className="banner">
         <h1>DubHacks 2021</h1>
-      <div className='rowC'>
+        <h3>now serving winter 2022</h3>
         <input
-        name = "courseNumber"
-        type = "text"
-        onChange={this.onInputchange}
-        placeholder = "search for a course"
-        className = "searchBox"
-        >
+          name = "courseNumber"
+          type = "text"
+          onChange={this.onInputchange}
+          placeholder = "search for a course"
+          className = "searchBox"
+          >
+          {console.log(this.state)}
         </input>
-{console.log(this.state)}
-        <h3>
-           <FcSearch size={50} className='searchIcon'/> </h3>
-           </div>
       </div>
-      
+
     );
   }
 }

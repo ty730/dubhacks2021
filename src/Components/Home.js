@@ -1,5 +1,6 @@
 import './../App.css';
 import React, { Component } from 'react';
+import Professor from './Professor';
 
 class Home extends Component {
   constructor(props) {
@@ -12,6 +13,8 @@ class Home extends Component {
   render() {
     return (
       <div className="home">
+        <Professor profName="Stuart Reges"/>
+        <Professor profName="Bob Boiko"/>
         <h1>About this project</h1>
         <p>
           This project is aimed to help alleviate the pressures and pains of course-planning at UW.
@@ -24,7 +27,7 @@ class Home extends Component {
         </p>
         <h1>How to use</h1>
         <p>
-          Using the search bar in the top right, type in the course code and then press the ENTER key. 
+          Using the search bar in the top right, type in the course code and then press the ENTER key.
         </p>
         <h1>About the team</h1>
         <p>
