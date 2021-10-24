@@ -57,6 +57,8 @@ class App extends Component {
         {this.state.professors.map((prof, i) => (
           <Professor key={i} profName={prof} />
         ))}
+        <h2 className="reddit-title">Popular Q&As from Reddit</h2>
+        <Reddit course={this.state.course} />
       </div>
     } else {
       display = <Home />

@@ -13,7 +13,7 @@ class Reddit extends Component {
 
   componentDidMount() {
     axios.post('/api/reddit', {
-      course: 'CSE 142' //TODO REPLACE WITH PROP
+      course: this.props.course //TODO REPLACE WITH PROP
     }).then((res) => {
         console.log("here");
       console.log(res.data);
@@ -24,7 +24,7 @@ class Reddit extends Component {
   render() {
     let main;
     if (this.state.fetched) {
-      main = <div>{this.state.response.map((redditPost, i) => {
+      main = <div className="reddit">{this.state.response.map((redditPost, i) => {
           return (<div>
             <h2 key={i}>{redditPost.selftext}</h2>
             {redditPost.comments.map((comment, j) => {

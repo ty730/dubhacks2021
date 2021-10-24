@@ -75,7 +75,6 @@ div {
   text-align: center;
   font-size: 16px;
   border-radius: 10px;
-  margin-left: auto;
 }
 
 .professor {
@@ -116,4 +115,30 @@ div {
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+.searchForm {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reddit-title {
+
+}
+
+.reddit {
+  text-align: left;
+  margin-left: 10%;
+  margin-right: 10%;
+  
+}
+
+.reddit h2 {
+
+}
+
+.reddit p {
+
 }
