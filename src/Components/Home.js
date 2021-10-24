@@ -24,8 +24,7 @@ class Home extends Component {
         </p>
         <h1>How to use</h1>
         <p>
-          Use the search bar in the top right to search the course code; you’ll find the professor’s
-          RateMyProfessor score, past course syllabi, and Reddit comments from other students about the course.
+          Using the search bar in the top right, type in the course code and then press the ENTER key. 
         </p>
         <h1>About the team</h1>
         <p>
