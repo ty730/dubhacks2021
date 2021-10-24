@@ -91,11 +91,11 @@ div {
 }
 
 .quality .great {
-  background-color: green;
+  background-color: rgb(60, 179, 113);
 }
 
 .quality .good {
-  background-color: yellow;
+  background-color: khaki;
 }
 
 .quality .okay {
@@ -103,7 +103,7 @@ div {
 }
 
 .quality .poor {
-  background-color: red;
+  background-color: crimson;
 }
 
 .professorContents {

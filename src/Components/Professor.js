@@ -2,6 +2,8 @@ import './../App.css';
 import React, { Component } from 'react';
 import ScaleLoader from "react-spinners/ScaleLoader";
 import axios from 'axios';
+import thumbdown from '../media/thumb-down.png';
+import thumbup from '../media/thumbs-up.png';
 
 class Professor extends Component {
   constructor(props) {
@@ -35,14 +37,16 @@ class Professor extends Component {
   }
 
   getTakeAgain(takeAgain) {
-    let path = "./media/";
+    let image = null;
     if (takeAgain > 50) {
-      path +="thumbs_up.png";
+      image = thumbup;
     } else {
-      path += "thumb_down.png";
+      image = thumbdown;
     }
-    return <div className="takeAgain">{takeAgain}% would take again<br/><img src={path}/></div>
+    return <div className="takeAgain">{takeAgain}% would take again<img height="15px" width="15px" src={image}/></div>
   }
+
+
 
   render() {
     let main;
@@ -56,7 +60,10 @@ class Professor extends Component {
           <p>From {this.state.professor.rating}</p>
         </div>
     } else {
-      main = <ScaleLoader color={"#F37C64"} loading={!this.state.fetched} size={150} />
+      main = 
+        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100px'}}>
+          <ScaleLoader color={"#607D8B"} loading={!this.state.fetched} size={150} />
+        </div>
     }
     return (
       <div className="professor">

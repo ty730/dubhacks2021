@@ -28,7 +28,7 @@ class PreviousQuarters extends Component {
           <p>{this.state.previousQuarters}</p>
         </div>
     } else {
-      main = <ScaleLoader color={"#F37C64"} loading={!this.state.fetched} size={150} />
+      main = <ScaleLoader color={"#607D8B"} loading={!this.state.fetched} size={150} />
     }
     return (
       <div className="prev_quarter">
