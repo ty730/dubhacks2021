@@ -51,13 +51,13 @@ router.route('/prof').post((req, res) => {
       });
       $('div[class*=CardFeedback__CardFeedbackNumber]').each((i, elem) => {
         if (i % 2) {
-          takeAgain.push($(elem).text());
-        } else {
           difficulty.push($(elem).text());
+        } else {
+          takeAgain.push($(elem).text());
         }
       });
       $('a[class*=TeacherCard__StyledTeacherCard]').each((i, elem) => {
-        link.push('https://www.ratemyprofessors.com/' + $(elem).attr('href'));
+        link.push('https://www.ratemyprofessors.com' + $(elem).attr('href'));
       });
       
       res.status(200).json({
