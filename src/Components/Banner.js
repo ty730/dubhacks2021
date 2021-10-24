@@ -7,7 +7,8 @@ class Banner extends Component {
     super(props);
     this.state = {
       courseName: "",
-      error: ""
+      error: "",
+      errorTwo: ""
     };
     this.onInputchange = this.onInputchange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -15,21 +16,25 @@ class Banner extends Component {
   onInputchange(event) {
     this.setState({
       courseName: event.target.value,
-      ...this.state.error
+      ...this.state.error,
+      ...this.state.errorTwo
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
     let err = "";
+    let errTwo = "";
     if (this.props.courseList.includes(this.state.courseName.toUpperCase())) {
       this.props.onChange(this.state.courseName.toUpperCase());
     } else {
-      err = "You must enter a valid course with the pattern [department abbr.] [course number], ex: CSE 142, cse 143"
+      err = "You must enter a valid course with the pattern [department abbr.] [course number], ex: CSE 142, cse 143";
+      errTwo = "We currently only support CSE courses, but plan to support more departments in the future!";
     }
     this.setState({
       ...this.state.courseName,
-      error: err
+      error: err,
+      errorTwo: errTwo
     })
   }
 
@@ -56,6 +61,7 @@ class Banner extends Component {
           </div>
           <div className="error-container">
             <p className="error-message">{this.state.error}</p>
+            <p className="error-message">{this.state.errorTwo}</p>
           </div>
       </div>
 

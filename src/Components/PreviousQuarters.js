@@ -13,12 +13,23 @@ class PreviousQuarters extends Component {
   }
 
   componentDidMount() {
+    this.wrapper();
+  }
+
+  wrapper() {
     axios.post('/api/prev_quarters', {
       course: this.props.course
     }).then((res) => {
       this.setState({previousQuarters: res.data, fetched: true});
     });
-  }
+ }
+
+  componentDidUpdate(prevProps) {
+    if(this.props.course != prevProps.course)
+    {
+      this.wrapper();
+    }
+  } 
 
   render() {
     let main = [];

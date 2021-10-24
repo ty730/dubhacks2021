@@ -13,6 +13,10 @@ class Reddit extends Component {
   }
 
   componentDidMount() {
+    this.wrapper();
+  }
+
+  wrapper() {
     axios.post('/api/reddit', {
       course: this.props.course //TODO REPLACE WITH PROP
     }).then((res) => {
@@ -21,6 +25,13 @@ class Reddit extends Component {
       this.setState({response: res.data, fetched: true});
     });
   }
+
+  componentDidUpdate(prevProps) {
+    if(this.props.course != prevProps.course)
+    {
+      this.wrapper();
+    }
+  } 
 
   render() {
     let main;
