@@ -1,9 +1,12 @@
-require('dotenv').config()
 const axios = require('axios')
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 8081
 app.use(express.json())
+
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 
 const path = require('path');
 if (process.env.NODE_ENV === 'production') {
