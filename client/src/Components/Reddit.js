@@ -17,8 +17,8 @@ class Reddit extends Component {
   }
 
   wrapper() {
-    axios.post('/api/reddit', {
-      course: this.props.course //TODO REPLACE WITH PROP
+    axios.post('https://uwclassify.herokuapp.com/api/reddit', {
+      course: this.props.course
     }).then((res) => {
         console.log("here");
       console.log(res.data);

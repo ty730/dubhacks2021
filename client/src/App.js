@@ -25,7 +25,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get("/api/list").then((result) => this.setState({ ...this.state.course, courseApiData: result, ...this.state.courseList, ...this.state.search, ...this.state.professors }, this.parseCourseList));
+    axios.get("https://uwclassify.herokuapp.com/api/list").then((result) => this.setState({ ...this.state.course, courseApiData: result, ...this.state.courseList, ...this.state.search, ...this.state.professors }, this.parseCourseList));
  }
 
  parseCourseList() {

@@ -17,7 +17,7 @@ class PreviousQuarters extends Component {
   }
 
   wrapper() {
-    axios.post('/api/prev_quarters', {
+    axios.post('https://uwclassify.herokuapp.com/api/prev_quarters', {
       course: this.props.course
     }).then((res) => {
       this.setState({previousQuarters: res.data, fetched: true});

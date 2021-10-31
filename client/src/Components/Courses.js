@@ -19,8 +19,8 @@ class Courses extends Component {
   }
 
   wrapper() {
-    axios.get("/api/list").then((result) => this.setState({ ...this.state.foundCourse, courseList: result, ...this.state.courseDescription, ...this.state.fetched }, this.parseCourseList));
-    axios.post("/api/course_desc", {course: this.props.course}).then((response) => {
+    axios.get("https://uwclassify.herokuapp.com/api/list").then((result) => this.setState({ ...this.state.foundCourse, courseList: result, ...this.state.courseDescription, ...this.state.fetched }, this.parseCourseList));
+    axios.post("https://uwclassify.herokuapp.com/api/course_desc", {course: this.props.course}).then((response) => {
       this.setState({courseDescription: response.data});
     });
   }

@@ -15,7 +15,7 @@ class Professor extends Component {
   }
 
   componentDidMount() {
-    axios.post('/api/prof', {
+    axios.post('https://uwclassify.herokuapp.com/api/prof', {
       prof: this.props.profName //TODO REPLACE WITH PROP
     }).then((res) => {
       this.setState({professor: res.data, fetched: true});
