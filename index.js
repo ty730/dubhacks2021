@@ -1,8 +1,9 @@
 const axios = require('axios')
 const express = require('express')
+const cors = require('cors')
 const app = express()
 const port = process.env.PORT || 8081
-app.use(express.json())
+app.use(cors({ origin: 'https://uwclassify.netlify.app' })).use(express.json())
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
